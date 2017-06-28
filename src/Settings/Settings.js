@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 
 import NewNavbar from "../components/Navbar";
 
@@ -40,10 +40,6 @@ export default class Settings extends Component {
 
 
   render(){
-    const container = {
-      display: "flex",
-      justifyContent: "center",
-    }
     const form = {
       width: "75%"
     }

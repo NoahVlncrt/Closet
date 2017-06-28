@@ -15,24 +15,26 @@ export default class Picker extends Component {
 
   toggle() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
     });
   }
 
+  ChangeSelection = (event) => {
+    this.setState({dropdowntoggle_text: event})
+  }
+
   render(){
-    const style = {
-      padding: "5px"
-    }
     return (
-      <Dropdown onChange={(event) => {console.log(event)}} isOpen={this.state.dropdownOpen} toggle={this.toggle} id="picker_clothes" style={style}>
+      <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} id="picker_clothes">
         <DropdownToggle caret>
           {this.state.dropdowntoggle_text}
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem>Shorts</DropdownItem>
-          <DropdownItem>Pants</DropdownItem>
-          <DropdownItem>Shirt</DropdownItem>
-          <DropdownItem>Jacket</DropdownItem>
+          <DropdownItem onClick={this.ChangeSelection.bind(this, 'All')}>All</DropdownItem>
+          <DropdownItem onClick={this.ChangeSelection.bind(this, 'Shorts')}>Shorts</DropdownItem>
+          <DropdownItem onClick={this.ChangeSelection.bind(this, 'Pants')}>Pants</DropdownItem>
+          <DropdownItem onClick={this.ChangeSelection.bind(this, 'Shirt')}>Shirt</DropdownItem>
+          <DropdownItem onClick={this.ChangeSelection.bind(this, 'Jacket')}>Jacket</DropdownItem>
         </DropdownMenu>
     </Dropdown>
     )
