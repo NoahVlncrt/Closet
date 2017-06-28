@@ -21,6 +21,7 @@ export default class Picker extends Component {
 
   ChangeSelection = (event) => {
     this.setState({dropdowntoggle_text: event})
+    this.props.triggerFilterChange(event)
   }
 
   render(){
