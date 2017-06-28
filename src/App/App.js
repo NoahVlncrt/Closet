@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       isOpen: false
     }
-    if(localStorage.getItem('Bucket_Slug') === null){
+    if(localStorage.getItem('slug') === null){
       this.state = {
         isOpen: true
       }

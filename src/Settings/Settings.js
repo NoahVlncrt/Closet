@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
 
 import NewNavbar from "../components/Navbar";
 
 export default class Settings extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      slug: '',
-      read_key: '',
-      write_key: ''
-    };
+    if(localStorage.getItem("slug") === null){
+      this.state = {
+        slug: '',
+        read_key: '',
+        write_key: '',
+        isOpen: false
+      }
+    } else {
+      this.state = {
+        slug: '',
+        read_key: '',
+        write_key: '',
+        isOpen: true
+      }
+    }
   }
 
   // It's sort of like move that bus but you don't get a new house. . .
@@ -24,8 +34,10 @@ export default class Settings extends Component {
     localStorage.setItem("slug", formInfo.slug)
     localStorage.setItem("read_key", formInfo.read_key)
     localStorage.setItem("write_key", formInfo.write_key)
+    this.props.history.push('/');
     event.preventDefault();
   }
+
 
   render(){
     const container = {
@@ -38,7 +50,8 @@ export default class Settings extends Component {
     return (
       <div>
         <NewNavbar/>
-        <div style={container}>
+        <Alert isOpen={this.state.isOpen}>Everything has been set correctly!</Alert>
+        <div style={{display: "flex",justifyContent: "center"}}>
           <Form style={form} onSubmit={this.SendThatForm}>
             <FormGroup>
               <Label for="bucket_slug">Bucket Slug</Label>
