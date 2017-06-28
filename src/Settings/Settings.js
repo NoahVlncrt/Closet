@@ -36,22 +36,25 @@ export default class Settings extends Component {
       width: "75%"
     }
     return (
-      <div style={container}>
-        <Form style={form} onSubmit={this.SendThatForm}>
-          <FormGroup>
-            <Label for="bucket_slug">Bucket Slug</Label>
-            <Input type="text" name="bucket_slug" id="bucket_slug" onChange={(event)=>{this.setState({slug: event.target.value})}}/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="api_read_key">API Read Key</Label>
-            <Input type="text" name="api_read_key" id="api_read_key" onChange={(event)=>{this.setState({read_key: event.target.value})}}/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="api_write_key">API Write Key</Label>
-            <Input type="text" name="api_write_key" id="api_write_key" onChange={(event)=>{this.setState({write_key: event.target.value})}}/>
-          </FormGroup>
-          <Button  color="primary">Submit</Button>
-        </Form>
+      <div>
+        <NewNavbar/>
+        <div style={container}>
+          <Form style={form} onSubmit={this.SendThatForm}>
+            <FormGroup>
+              <Label for="bucket_slug">Bucket Slug</Label>
+              <Input type="text" name="bucket_slug" id="bucket_slug" onChange={(event)=>{this.setState({slug: event.target.value})}}/>
+            </FormGroup>
+            <FormGroup>
+              <Label for="api_read_key">API Read Key</Label>
+              <Input type="text" name="api_read_key" id="api_read_key" onChange={(event)=>{this.setState({read_key: event.target.value})}}/>
+            </FormGroup>
+            <FormGroup>
+              <Label for="api_write_key">API Write Key</Label>
+              <Input type="text" name="api_write_key" id="api_write_key" onChange={(event)=>{this.setState({write_key: event.target.value})}}/>
+            </FormGroup>
+            <Button  color="primary">Submit</Button>
+          </Form>
+        </div>
       </div>
     )
   }
