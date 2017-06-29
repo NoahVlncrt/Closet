@@ -40,8 +40,8 @@ class App extends Component {
           Oh no! Your bucket details seem to be missing. Go settings and change that.
         </Alert>
         <div style={Styles.buttonMenu}>
-          <Picker triggerFilterChange={this.GetPickerSelection}/>    {/* TODO: pass value from child to the parent */}
-          <Button outline color="primary">Upload</Button>
+          <Picker triggerFilterChange={this.GetPickerSelection}/>
+          <Button outline color="primary" onClick={()=>{this.props.history.push('/upload')}}>Upload</Button>
         </div>
       </div>
 
