@@ -24,7 +24,7 @@ export default class Submitted extends Component {
     const Styles = {
       "imgArea": {
         float: "left",
-        width: "25%"
+        width: "29%"
       },
       "flexCenter": {
         display: "flex",
@@ -37,7 +37,6 @@ export default class Submitted extends Component {
         <h2 style={{textAlign: "center"}}>Colors</h2>
         <div style={Styles.flexCenter}>
           <div style={{width: "50px", height: "50px", backgroundColor: this.props.palette.Vibrant.getHex()}}></div>
-          <div style={{width: "50px", height: "50px", backgroundColor: this.props.palette.LightVibrant.getHex()}}></div>
           <div style={{width: "50px", height: "50px", backgroundColor: this.props.palette.DarkVibrant.getHex()}}></div>
           <div style={{width: "50px", height: "50px", backgroundColor: this.props.palette.Muted.getHex()}}></div>
           <div style={{width: "50px", height: "50px", backgroundColor: this.props.palette.LightMuted.getHex()}}></div>
