@@ -10,12 +10,13 @@ export default class Uploader extends Component {
     super(props)
     this.state = {
       imgLink: '',
-      palette: ''
+      palette: '',
+      type: ''
     }
   }
 
   onImageDrop = (acceptedFiles, rejectedFiles) => {
-    Vibrant.from(acceptedFiles[0].preview).getPalette((err, palette) => {this.setState({palette: palette}); this.setState({imgLink: acceptedFiles[0].preview})})
+    Vibrant.from(acceptedFiles[0].preview).getPalette((err, palette) => {this.setState({palette: palette, imgLink: acceptedFiles[0].preview, type: acceptedFiles[0].type })})
   }
 
 
@@ -23,7 +24,7 @@ export default class Uploader extends Component {
     if(this.state.imgLink === ''){
       return <Fresh update={this.onImageDrop.bind(this)}/>
     } else {
-      return <Submitted imgLink={this.state.imgLink} palette={this.state.palette}/>
+      return <Submitted imgLink={this.state.imgLink} palette={this.state.palette} type={this.state.type}/>
     }
   }
 
