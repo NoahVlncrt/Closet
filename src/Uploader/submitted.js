@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, ButtonGroup } from 'reactstrap';
+import Cosmic from 'cosmicjs';
 
 export default class Submitted extends Component {
   constructor(props){
@@ -28,6 +29,52 @@ export default class Submitted extends Component {
       this.state.tags.push(item)
     }
     this.setState({ tags: [...this.state.tags]})
+  }
+
+  Upload = () => {
+    const tags = []
+    this.state.tags.map( (tag) => {
+      tags.push(tag)
+      return "Completed"
+    })
+
+    var params = {
+      write_key: localStorage.getItem("write_key"),
+      type_slug: 'articles',
+      title: '',
+      metafields: [
+        {
+          key: 'tags',
+          value: tags
+        },
+        {
+          key: 'item',
+          value: 'this.props.imgLink'
+        },
+        {
+          key: 'colors',
+          value: {
+            Vibrant: this.props.palette.Vibrant.getHex(),
+            DarkVibrant: this.props.palette.DarkVibrant.getHex(),
+            Muted: this.props.palette.Muted.getHex(),
+            LightMuted: this.props.palette.LightMuted.getHex(),
+            DarkMuted: this.props.palette.DarkMuted.getHex()
+          }
+        }
+      ]
+    }
+
+    var config = {
+      "bucket": {
+        slug: localStorage.getItem("slug"),
+        write_key: localStorage.getItem("write_key"),
+        read_key: localStorage.getItem("read_key")
+      }
+    }
+
+    //Cosmic.addObject(config, params, function(error, response){
+    //  console.log(error)
+    //})
   }
 
 
@@ -62,7 +109,7 @@ export default class Submitted extends Component {
             <Button color="secondary" onClick={() => {this.onCheckboxBtnClick(4, "Jacket"); this.tagChange("Jacket")}} active={this.state.cSelected.includes(4)}>Jacket</Button>
           </ButtonGroup>
         </div>
-        <Button outline color="primary" style={{position: "fixed", right: "5px", bottom: "10px"}}>Upload</Button>
+        <Button outline color="primary" style={{position: "fixed", right: "5px", bottom: "10px"}} onClick={() => this.Upload()}>Upload</Button>
       </div>
     )
   }
