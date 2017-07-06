@@ -72,10 +72,6 @@ export default class Submitted extends Component {
       ]
     }
 
-
-
-    console.log(params)
-
     var config = {
       "bucket": {
         slug: localStorage.getItem("slug"),
@@ -84,11 +80,12 @@ export default class Submitted extends Component {
       }
     }
 
-    Cosmic.addObject(config, params, function(error, response){
-      console.log(error)
-    })
-  }
 
+    Cosmic.addObject(config, params, function(error, response){
+
+    })
+    this.props.history.push('/')
+  }
 
   render(){
     const Styles = {

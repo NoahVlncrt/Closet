@@ -44,7 +44,7 @@ export default class Uploader extends Component {
     if(this.state.name === ''){
       return <Fresh update={this.onImageDrop.bind(this)}/>
     } else {
-      return <Submitted imgLink={this.state.imgLink} palette={this.state.palette} type={this.state.type} name={this.state.name}/>
+      return <Submitted imgLink={this.state.imgLink} palette={this.state.palette} type={this.state.type} name={this.state.name} history={this.props.history}/>
     }
   }
 
