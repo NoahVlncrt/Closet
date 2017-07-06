@@ -7,6 +7,7 @@
     "canvas": "^1.6.5",
     "cosmicjs": "^2.39.91",
     "immutability-helper": "^2.2.2",
+    "meteor-random": "^0.0.3",
     "node-vibrant": "^3.0.0-alpha.2",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, ButtonGroup } from 'reactstrap';
 import Cosmic from 'cosmicjs';
+import Random from 'meteor-random';
 
 export default class Submitted extends Component {
   constructor(props){
@@ -38,31 +39,42 @@ export default class Submitted extends Component {
       return "Completed"
     })
 
+    const colormap = {
+      Vibrant: this.props.palette.Vibrant.getHex(),
+      DarkVibrant: this.props.palette.DarkVibrant.getHex(),
+      Muted: this.props.palette.Muted.getHex(),
+      LightMuted: this.props.palette.LightMuted.getHex(),
+      DarkMuted: this.props.palette.DarkMuted.getHex()
+    }
+
     var params = {
       write_key: localStorage.getItem("write_key"),
       type_slug: 'articles',
-      title: '',
+      title: Random.id(),
+      content: '',
       metafields: [
         {
           key: 'tags',
+          type: 'check-boxes',
           value: tags
         },
         {
           key: 'item',
-          value: 'this.props.imgLink'
+          type: 'file',
+          title: '',
+          value: this.props.name
         },
         {
           key: 'colors',
-          value: {
-            Vibrant: this.props.palette.Vibrant.getHex(),
-            DarkVibrant: this.props.palette.DarkVibrant.getHex(),
-            Muted: this.props.palette.Muted.getHex(),
-            LightMuted: this.props.palette.LightMuted.getHex(),
-            DarkMuted: this.props.palette.DarkMuted.getHex()
-          }
+          type: 'textarea',
+          value: JSON.stringify(colormap)
         }
       ]
     }
+
+
+
+    console.log(params)
 
     var config = {
       "bucket": {
@@ -72,9 +84,9 @@ export default class Submitted extends Component {
       }
     }
 
-    //Cosmic.addObject(config, params, function(error, response){
-    //  console.log(error)
-    //})
+    Cosmic.addObject(config, params, function(error, response){
+      console.log(error)
+    })
   }
 
 
